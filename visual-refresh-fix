@@ -1,0 +1,167 @@
+/* alinhar o chat */
+.visual-refresh {
+    --custom-channel-textarea-text-area-height: 56px;
+    .form_f75fb0 {
+        display: flex;
+        flex-direction: column;
+        padding: 0 8px 8px 8px;
+    }
+    .channelTextArea_f75fb0 {
+        margin-bottom: 0;
+    }
+    .base_b88801 {
+        position: static;
+        order: -1;
+        padding: 0 8px;
+        background-color: var(--chat-background-default);
+        transition: border-color .2s ease;
+        border: 1px solid var(--border-faint);
+        border-bottom: none;
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+    .stackedBars__74017 {
+        transition: border-color .2s ease;
+        border-color: var(--border-faint) !important;
+    }
+    .form_f75fb0:has(.base_b88801) {
+        .channelTextArea_f75fb0 {
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        }
+        .stackedBars__74017 {
+            border-radius: 0;
+        }
+    }
+    .form_f75fb0:has(.channelTextArea__74017:focus-within) {
+        .base_b88801 {
+            border-color: var(--border-subtle);
+        }
+        .stackedBars__74017 {
+            border-color: var(--border-subtle) !important;
+        }
+    }
+}
+
+/* remover a barra de cima feia */
+
+.visual-refresh {
+    div.subtitleContainer_f75fb0,
+    main.container__133bf section.container__9293f {
+        width: calc(100% - 172px);
+    }
+
+    div.page_c48ade {
+        &:not(:has(> div.chat_f75fb0)) {
+            anchor-name: --vr-header-snippet;
+        }
+
+        & > div.chat_f75fb0 {
+            anchor-name: --vr-header-snippet;
+        }
+    }
+
+    div.base_c48ade {
+        grid-template-rows: [top] 0 [titleBarEnd] min-content [noticeEnd] 1fr [end];
+
+        &:has(div.bar_c38106 > div.trailing_c38106 > *:nth-child(3)) {
+            & div.subtitleContainer_f75fb0,
+            & main.container__133bf section.container__9293f {
+                width: calc(100% - 216px);
+            }
+        }
+
+        & > div.bar_c38106 {
+            position: absolute;
+            position-anchor: --vr-header-snippet;
+            top: 0;
+            right: anchor(right);
+            width: anchor-size(width);
+            padding: 0;
+        }
+
+        & div.trailing_c38106 {
+            background: var(--background-base-lower);
+            border: none;
+            border-bottom: 1px solid var(--border-subtle);
+            height: var(--custom-channel-header-height);
+        }
+    }
+
+    :not(:has(div.page_c48ade > div.chat_f75fb0)) div.base_c48ade > div.bar_c38106 {
+        right: 0 !important;
+    }
+
+    ul[data-list-id="guildsnav"] > div.itemsContainer_ef3116 {
+        margin-top: 16px;
+    }
+
+    div.topic__6ec1a {
+        -webkit-app-region: no-drag;
+    }
+}
+
+/*n tampar a barra de servidor com o bgl */
+
+.visual-refresh section.panels_c48ade {
+  margin-left: 72px;
+  width: calc(100% - var(--space-xs)*2 - 72px) !important;
+  .actionButtons_e131a9 button {
+    padding: 0;
+  }
+}
+nav.guilds_c48ade {
+  margin-bottom: 0 !important;
+}
+
+/* arruma a porra dos servidor quadrado */
+[class*="closedFolderIconWrapper_"] > [class*="guildIcon_"],
+[data-list-item-id*="guildsnav_"] > [class*="icon_"] {
+    border-radius: 50% !important;
+}
+
+/* auementa a barra dos servidor
+
+.visual-refresh {
+    --guildbar-avatar-size: 48px;
+
+    .listItem__650eb {
+        defs > path {
+            d: path("M 0 0 H 200 V 200 H 0 Z");
+        }
+
+        .childWrapper__6e9f8,
+        .icon__6e9f8,
+        .icon_f34534,
+        .circleIconButton__5bc7e {
+            border-radius: 100% !important;
+        }
+
+        .svg_cc5dd2:not(.folderIcon__48112 .svg_cc5dd2) > mask {
+            use[href$="-lower_badge_masks"] {
+                transform: translate(8px, 8px);
+            }
+            use[href$="-upper_badge_masks"] {
+                transform: translate(8px, 0px);
+            }
+        }
+
+        .svg_cc5dd2 {
+            top: 0px;
+            left: 0px;
+
+            foreignObject {
+                width: var(--guildbar-avatar-size);
+                height: var(--guildbar-avatar-size);
+                transform: translate(-4px, -4px);
+            }
+        }
+    }
+
+    .stack_dbd263 >
+    div:not([class]):has(.listItem__650eb) {
+        height: 48px !important;
+    }
+
+    .isExpanded__48112 .stack_dbd263 {
+        height: auto !important;
+    }
+}
